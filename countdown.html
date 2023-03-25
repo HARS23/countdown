@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Countdown</title>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url('https://media.discordapp.net/attachments/849126562318123009/1089031603944177726/wp9643801.jpg?width=875&height=437');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 30px;
+}
+
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
+}
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="text">
+    <h1>Countdown</h1>
+    <hr>
+    <p id="count" style="font-size:30px"></p>
+  </div>
+</div>
+
+<script>
+// Set the date here
+var countDownDate = new Date("Nov 23, 2023 00:00:00").getTime();
+
+
+var countdownfunction = setInterval(function() {
+
+
+  var now = new Date().getTime();
+  
+
+  var distance = countDownDate - now;
+  
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+ 
+  document.getElementById("count").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  
+
+  if (distance < 0) {
+    clearInterval(countdownfunction);
+    document.getElementById("count").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
